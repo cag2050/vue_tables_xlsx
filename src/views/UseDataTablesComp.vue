@@ -1,5 +1,5 @@
 <template lang='pug'>
-DataTables(:tableTitles='tableTitles' :tableData='tableData' :tableProps='tableProps' :loading='tableLoading')
+DataTables(:tableTitles='titles' :tableData='data' :tableProps='tableProps' :loading='tableLoading')
 </template>
 
 <script>
@@ -12,15 +12,25 @@ export default {
     },
     data () {
         return {
-            tableTitles: [],
-            tableData: [],
+            titles: [{
+                label: '用户', prop: 'user'
+            }, {
+                label: '用户类型', prop: 'user_type'
+            }],
+            data: [{
+                user: 'cag',
+                user_type: '原创'
+            }, {
+                user: 'jeff',
+                user_type: '非原创'
+            }],
             tableProps: {
                 height: 350
             },
             tableLoading: false
         }
     },
-    mounted () {
+    created () {
 
     },
     computed: {
