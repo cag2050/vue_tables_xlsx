@@ -9,8 +9,11 @@ import DataTables from 'vue-data-tables'
 
 import './assets/theme-chalk/index.css'
 
+let XLSX = require('xlsx')
+
 Vue.use(ElementUI)
 Vue.use(DataTables)
+Vue.use(XLSX)
 
 Vue.config.productionTip = false
 

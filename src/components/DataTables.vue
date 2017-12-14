@@ -6,6 +6,12 @@
 </template>
 
 <script>
+// import XLSX from 'xlsx'
+import alasql from 'alasql'
+let XLSX = require('xlsx')
+console.log(alasql)
+console.log(XLSX)
+
 var json2csv = require('json2csv')
 let CsvExport = function (data, fields, fieldNames, fileName) {
     try {
@@ -97,8 +103,6 @@ export default {
         let columns = []
         let columnNames = []
         for (let item of this.tableTitles) {
-            console.log(item.prop)
-            columns.push(item.prop)
             columnNames.push(item.prop)
         }
         this.actionsDef = {
@@ -109,7 +113,14 @@ export default {
             def: [{
                 name: '全部导出',
                 handler: () => {
-                    CsvExport(this.tableData, columns, columnNames, 'all')
+                    alasql.promise('SELECT * INTO XLSX("restest280b.xlsx") FROM ?', [this.tableData])
+                            .then(function (data) {
+                                console.log('Data saved')
+                            })
+                            .catch(function (err) {
+                                console.log('Error:', err)
+                            })
+                    // CsvExport(this.tableData, columns, columnNames, 'all')
                 },
                 icon: 'plus'
             }, {
