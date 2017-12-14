@@ -1,5 +1,9 @@
 # alasql_demo
 
+* https://njleonzhang.github.io/vue-data-tables/#/event?id=filtered-data
+
+* 没使用 https://github.com/agershun/alasql  
+使用的是：https://github.com/zemirco/json2csv
 > A Vue.js project
 
 ## Build Setup

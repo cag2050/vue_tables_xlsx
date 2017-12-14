@@ -6,10 +6,13 @@
 </template>
 
 <script>
-// import XLSX from 'xlsx'
+import XLSX from 'xlsx'
 import alasql from 'alasql'
-let XLSX = require('xlsx')
+
+/*
+// let XLSX = require('xlsx')
 console.log(alasql)
+*/
 console.log(XLSX)
 
 var json2csv = require('json2csv')
@@ -20,11 +23,20 @@ let CsvExport = function (data, fields, fieldNames, fileName) {
             fields: fields,
             fieldNames: fieldNames
         })
-        var csvContent = 'data:text/xlscharset=GBK,\uFEFF' + result
+        var csvContent = 'data:text/csvcharset=GBK,\uFEFF' + result
         var encodedUri = encodeURI(csvContent)
         var link = document.createElement('a')
         link.setAttribute('href', encodedUri)
-        link.setAttribute('download', `${(fileName || 'file')}.xls`)
+        /*
+        console.log('encodedUri=')
+        console.log(encodedUri)
+        alasql(['CREATE TABLE IF NOT EXISTS geo.country', 'SELECT * INTO geo.country FROM CSV(encodedUri,{headers:true})'])
+            .then(function (res) {
+                // results from the file asia.xlsx
+                console.log(res)
+            })
+        */
+        link.setAttribute('download', `${(fileName || 'file')}.csv`)
         document.body.appendChild(link)
         link.click()
         document.body.removeChild(link)
@@ -103,6 +115,7 @@ export default {
         let columns = []
         let columnNames = []
         for (let item of this.tableTitles) {
+            columns.push(item.prop)
             columnNames.push(item.prop)
         }
         this.actionsDef = {
@@ -113,14 +126,27 @@ export default {
             def: [{
                 name: '全部导出',
                 handler: () => {
-                    alasql.promise('SELECT * INTO XLSX("restest280b.xlsx") FROM ?', [this.tableData])
+                    /*
+                    let XLSX = require('xlsx')
+                    console.log(XLSX)
+                    */
+                    alasql('SELECT * INTO XLSX("restest280b.xlsx") FROM ?', [this.tableData])
                             .then(function (data) {
                                 console.log('Data saved')
                             })
                             .catch(function (err) {
                                 console.log('Error:', err)
                             })
-                    // CsvExport(this.tableData, columns, columnNames, 'all')
+                    /*
+                    alasql([['SELECT * FROM ?', [this.tableData]]])
+                        .then(data => {
+                            console.log(data)
+                        })
+                        .catch(error => {
+                            console.log(error)
+                        })
+                    */
+                    CsvExport(this.tableData, columns, columnNames, 'all')
                 },
                 icon: 'plus'
             }, {
