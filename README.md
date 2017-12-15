@@ -1,4 +1,4 @@
-# alasql_demo
+# vue_tables_xlsx_demo
 
 ### 官方地址
 * vue-data-tables:  
