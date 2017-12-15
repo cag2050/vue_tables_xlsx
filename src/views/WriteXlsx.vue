@@ -10,7 +10,7 @@ export default {
     name: '',
     data () {
         return {
-            data: ['SheetJS'.split(''), '1234567'.split('')]
+            data: [[1, 2], [3, 4]]
         }
     },
     methods: {

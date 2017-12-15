@@ -1,7 +1,7 @@
 <template lang='pug'>
 .datatables.fl
     div(v-loading='loading' element-loading-text='数据加载中')
-        button(@click="exportFile(tableData, 'sheet1', 'all')") 导出全部
+        button(@click="exportFile(data, 'sheet1', 'all')") 导出全部
         button(@click="exportFile(filteredData, 'sheet1', 'filtered')") 导出过滤
         data-tables(:data='tableData' :actions-def='actionsDef' v-show='show' :table-props='tableProps' :search-def='searchDef' :pagination-def='paginationDef' @filtered-data='handleFilteredData')
             el-table-column(v-for='title in tableTitles' :prop='title.prop' :label='title.label' :key='title.label' sortable='custom')
@@ -74,7 +74,8 @@ export default {
     data () {
         return {
             actionsDef: {},
-            filteredData: []
+            filteredData: [],
+            data: [[1, 2], [3, 4]]
         }
     },
     created () {
@@ -86,7 +87,7 @@ export default {
             def: [{
                 name: '全部导出',
                 handler: () => {
-                    this.exportFile(this.tableData, 'sheet1', 'all')
+                    this.exportFile(this.data, 'sheet1', 'all')
                 },
                 icon: 'plus'
             }, {
@@ -104,6 +105,8 @@ export default {
         },
         exportFile (data, sheetName, fileName) {
             console.log(fileName)
+            console.log(data[0])
+            console.log(data[1])
             const ws = XLSX.utils.aoa_to_sheet(data)
             const wb = XLSX.utils.book_new()
             XLSX.utils.book_append_sheet(wb, ws, sheetName)
