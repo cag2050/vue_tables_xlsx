@@ -73,8 +73,7 @@ export default {
     data () {
         return {
             actionsDef: {},
-            filteredData: [],
-            data: [[1, 2], [3, 4]]
+            filteredData: []
         }
     },
     created () {
@@ -88,13 +87,13 @@ export default {
                 handler: () => {
                     this.exportFile(this.getFileData(this.tableData), 'sheet1', 'all')
                 },
-                icon: 'plus'
+                icon: ''
             }, {
                 name: '过滤导出',
                 handler: () => {
                     this.exportFile(this.getFileData(this.filteredData), 'sheet1', 'filtered')
                 },
-                icon: 'upload'
+                icon: ''
             }]
         }
     },
