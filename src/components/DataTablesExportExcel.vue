@@ -1,7 +1,6 @@
 <template lang='pug'>
 .datatables.fl
     div(v-loading='loading' element-loading-text='数据加载中')
-        div(ref='doAClick') aaa
         data-tables(:data='tableData' :actions-def='actionsDef' v-show='show' :table-props='tableProps' :search-def='searchDef' :pagination-def='paginationDef' @filtered-data='handleFilteredData')
             el-table-column(v-for='title in tableTitles' :prop='title.prop' :label='title.label' :key='title.label' sortable='custom')
 </template>
@@ -107,9 +106,6 @@ export default {
             XLSX.utils.book_append_sheet(wb, ws, sheetName)
             const wbout = XLSX.write(wb, {type: 'binary', bookType: 'xlsx'})
             FileSaver.saveAs(new Blob([this.s2ab(wbout)], {type: 'application/octet-stream'}), fileName + '.xlsx')
-            console.log('all end')
-            console.log(this.$refs.doAClick.click())
-            this.$refs.doAClick.click()
         },
         s2ab (s) {
             const buf = new ArrayBuffer(s.length)
