@@ -8,16 +8,14 @@ export default new Router({
     mode: 'history',
     routes: [
         {
-            path: '/',
+            path: '/csv',
             name: '',
-            component: resolve => require(['../views/UseDataTablesComp'], resolve),
-            meta: { scrollToTop: true }
+            component: resolve => require(['../views/UseDataTablesExportCsvComp'], resolve)
         },
         {
-            path: '/tablecomp',
+            path: '/',
             name: '',
-            component: resolve => require(['../components/DataTables'], resolve),
-            meta: { scrollToTop: true }
+            component: resolve => require(['../views/UseDataTablesExportExcelComp'], resolve)
         },
         {
             path: '/hello',

@@ -1,14 +1,14 @@
 <template lang='pug'>
-DataTables(:tableTitles='titles' :tableData='data' :tableProps='tableProps' :loading='tableLoading')
+    DataTablesExportExcel(:tableTitles='titles' :tableData='data' :tableProps='tableProps' :loading='tableLoading')
 </template>
 
 <script>
-import DataTables from '../components/DataTables'
+import DataTablesExportExcel from '../components/DataTablesExportExcel'
 
 export default {
     name: '',
     components: {
-        DataTables
+        DataTablesExportExcel
     },
     data () {
         return {
