@@ -18,6 +18,11 @@ export default new Router({
             component: resolve => require(['../views/UseDataTablesExportExcelComp'], resolve)
         },
         {
+            path: '/writexlsx',
+            name: '',
+            component: resolve => require(['../views/WriteXlsx'], resolve)
+        },
+        {
             path: '/hello',
             name: 'HelloWorld',
             component: HelloWorld

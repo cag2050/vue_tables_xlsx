@@ -10,7 +10,6 @@
 <script>
 import XLSX from 'xlsx'
 import FileSaver from 'file-saver'
-console.log(FileSaver)
 
 export default {
     props: {
