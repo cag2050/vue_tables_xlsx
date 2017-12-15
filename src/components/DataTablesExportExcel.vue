@@ -1,8 +1,6 @@
 <template lang='pug'>
 .datatables.fl
     div(v-loading='loading' element-loading-text='数据加载中')
-        button(@click="exportFile(data, 'sheet1', 'all')") 导出全部
-        button(@click="exportFile(filteredData, 'sheet1', 'filtered')") 导出过滤
         data-tables(:data='tableData' :actions-def='actionsDef' v-show='show' :table-props='tableProps' :search-def='searchDef' :pagination-def='paginationDef' @filtered-data='handleFilteredData')
             el-table-column(v-for='title in tableTitles' :prop='title.prop' :label='title.label' :key='title.label' sortable='custom')
 </template>
@@ -87,13 +85,13 @@ export default {
             def: [{
                 name: '全部导出',
                 handler: () => {
-                    this.exportFile(this.data, 'sheet1', 'all')
+                    this.exportFile(this.getFileData(this.tableData), 'sheet1', 'all')
                 },
                 icon: 'plus'
             }, {
                 name: '过滤导出',
                 handler: () => {
-                    this.exportFile(this.filteredData, 'sheet1', 'filtered')
+                    this.exportFile(this.getFileData(this.filteredData), 'sheet1', 'filtered')
                 },
                 icon: 'upload'
             }]
@@ -104,23 +102,11 @@ export default {
             this.filteredData = filteredData
         },
         exportFile (data, sheetName, fileName) {
-            console.log(fileName)
-            console.log(data[0])
-            console.log(data[1])
             const ws = XLSX.utils.aoa_to_sheet(data)
             const wb = XLSX.utils.book_new()
             XLSX.utils.book_append_sheet(wb, ws, sheetName)
             const wbout = XLSX.write(wb, {type: 'binary', bookType: 'xlsx'})
-            /*
-            var link = document.createElement('a')
-            link.setAttribute('href', new Blob([this.s2ab(wbout)], {type: 'application/octet-stream'}))
-            link.setAttribute('download', 'aaa.xlsx')
-            document.body.appendChild(link)
-            link.click()
-            document.body.removeChild(link)
-            */
             FileSaver.saveAs(new Blob([this.s2ab(wbout)], {type: 'application/octet-stream'}), fileName + '.xlsx')
-            console.log('all end')
             console.log('all end')
         },
         s2ab (s) {
@@ -130,6 +116,26 @@ export default {
                 view[i] = s.charCodeAt(i) & 0xFF
             }
             return buf
+        },
+        getFileData (tableDataParam) {
+            let allData = []
+            let titlesData = []
+            let lineData = []
+            let allLineData = []
+            for (let item of this.tableTitles) {
+                titlesData.push(item.label)
+            }
+            let titleLen = this.tableTitles.length
+            for (let item of tableDataParam) {
+                lineData = []
+                for (let i = 0; i < titleLen; i++) {
+                    lineData.push(item[this.tableTitles[i].prop])
+                }
+                allLineData.push(lineData)
+            }
+            allData.push(titlesData)
+            allData = allData.concat(allLineData)
+            return allData
         }
     }
 }
