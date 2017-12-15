@@ -1,9 +1,13 @@
 # alasql_demo
 
-* https://njleonzhang.github.io/vue-data-tables/#/event?id=filtered-data
+### 官方地址
+* vue-data-tables:  
+https://njleonzhang.github.io/vue-data-tables/#/event?id=filtered-data
+* js-xlsx:
+https://github.com/sheetjs/js-xlsx
 
-* 没使用 https://github.com/agershun/alasql 和 https://github.com/zemirco/json2csv
-使用的是：https://github.com/sheetjs/js-xlsx
+
+
 > A Vue.js project
 
 ## Build Setup
