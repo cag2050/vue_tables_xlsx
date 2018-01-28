@@ -12,7 +12,7 @@ https://github.com/sheetjs/js-xlsx
 1. 导出.csv（官方例子：https://njleonzhang.github.io/vue-data-tables/#/event?id=filtered-data）
 
 ### 兼容性问题：
-1. 在Safari 10.0版本中，有报错：`Failed to load resource: Frame load interrupted`，原因是safari还不支持，升级到10.1以上即可支持。详见：https://github.com/eligrey/FileSaver.js/issues/215  
+1. 在Safari 10.0及以下版本中，有报错：`Failed to load resource: Frame load interrupted`，原因是safari还不支持，升级到10.1及以上即可支持。详见：https://github.com/eligrey/FileSaver.js/issues/215  
 
 > A Vue.js project
 
