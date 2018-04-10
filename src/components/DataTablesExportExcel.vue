@@ -2,7 +2,7 @@
 .datatables.fl
     div(v-loading='loading' element-loading-text='数据加载中')
         data-tables(:data='tableData' :actions-def='actionsDef' v-show='show' :table-props='tableProps' :search-def='searchDef' :pagination-def='paginationDef' @filtered-data='handleFilteredData')
-            el-table-column(v-for='title in tableTitles' :prop='title.prop' :label='title.label' :key='title.label' sortable='custom')
+            el-table-column(v-for='title in tableTitles' :prop='title.prop' :label='title.label' :key='title.label' sortable='custom' :formatter='formatterColumn')
 </template>
 
 <script>
@@ -11,6 +11,15 @@ import FileSaver from 'file-saver'
 
 export default {
     props: {
+        // 作用：父组件使用该子组件事，格式化单元格内容和样式
+        formatterColumn: {
+            type: Function,
+            required: false,
+            default: (row, column) => {
+                let key = column.property
+                return row[key]
+            }
+        },
         tableTitles: {
             type: Array,
             required: true,

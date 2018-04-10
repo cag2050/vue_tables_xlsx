@@ -1,5 +1,5 @@
 <template lang='pug'>
-    DataTablesExportExcel(:tableTitles='titles' :tableData='data' :tableProps='tableProps' :loading='tableLoading')
+    DataTablesExportExcel(:tableTitles='titles' :tableData='data' :tableProps='tableProps' :loading='tableLoading' :formatterColumn='formatColumnMethod')
 </template>
 
 <script>
@@ -37,7 +37,12 @@ export default {
 
     },
     methods: {
-
+        // 可用于格式化单元格内容和样式
+        formatColumnMethod (row, column) {
+            let key = column.property
+            let h = this.$createElement
+            return h('div', {style: 'color: red;'}, row[key])
+        }
     }
 }
 </script>
