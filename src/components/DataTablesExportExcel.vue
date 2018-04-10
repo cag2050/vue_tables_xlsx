@@ -11,7 +11,7 @@ import FileSaver from 'file-saver'
 
 export default {
     props: {
-        // 作用：父组件使用该子组件事，格式化单元格内容和样式
+        // 作用：父组件使用该子组件时，格式化单元格内容或样式
         formatterColumn: {
             type: Function,
             required: false,
