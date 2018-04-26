@@ -1,10 +1,15 @@
 # vue_tables_xlsx_demo
 
 ### 官方地址
-* vue-data-tables:  
+* vue-data-tables:
 https://njleonzhang.github.io/vue-data-tables/#/event?id=filtered-data
-* js-xlsx:  
+* js-xlsx:
 https://github.com/sheetjs/js-xlsx
+
+### vue-data-tables 使用
+1. 操作按钮的样式：
+官方地址：https://njleonzhang.github.io/vue-data-tables/#/tableActionCol?id=define-action-col-bar ,
+按钮样式 type， 除了页面上列出的，还可以加上`is-plain`等样式，比如：`type: 'primary is-plain'`。
 
 ### 3个例子
 1. 导出.xlsx（vue-data-tables结合js-xlsx实现导出.xlsx文件）
