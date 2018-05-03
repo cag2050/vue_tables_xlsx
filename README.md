@@ -11,7 +11,7 @@ https://github.com/sheetjs/js-xlsx
 官方地址：https://njleonzhang.github.io/vue-data-tables/#/tableActionCol?id=define-action-col-bar ,
 按钮样式 type， 除了页面上列出的，还可以加上`is-plain`等样式，比如：`type: 'primary is-plain'`。
 
-### 3个例子
+### 例子
 1. 导出.xlsx（vue-data-tables结合js-xlsx实现导出.xlsx文件）
 1. writexlsx（官方例子改造：https://github.com/SheetJS/js-xlsx/tree/master/demos/vue）</router-link><br/>
 1. 导出.csv（官方例子：https://njleonzhang.github.io/vue-data-tables/#/event?id=filtered-data）
