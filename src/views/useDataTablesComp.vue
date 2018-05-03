@@ -62,12 +62,5 @@
 </script>
 
 <style lang='stylus' type="text/stylus">
-    #DataTableDemo
-        .echarts
-            width 400px
-            height 400px
-        .is-circle
-            border-radius: 50%;
-            padding: 12px;
 </style>
 
