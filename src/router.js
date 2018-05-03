@@ -10,17 +10,22 @@ export default new Router({
         {
             path: '/csv',
             name: '',
-            component: resolve => require(['../views/UseDataTablesExportCsvComp'], resolve)
+            component: resolve => require(['./views/UseDataTablesExportCsvComp'], resolve)
         },
         {
             path: '/',
             name: '',
-            component: resolve => require(['../views/UseDataTablesExportExcelComp'], resolve)
+            component: resolve => require(['./views/UseDataTablesExportExcelComp'], resolve)
+        },
+        {
+            path: '/render_table_header_cell',
+            name: '',
+            component: resolve => require(['./views/useDataTablesComp'], resolve)
         },
         {
             path: '/writexlsx',
             name: '',
-            component: resolve => require(['../views/WriteXlsx'], resolve)
+            component: resolve => require(['./views/WriteXlsx'], resolve)
         },
         {
             path: '/hello',

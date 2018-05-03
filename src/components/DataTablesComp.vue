@@ -2,8 +2,8 @@
 .datatables.fl
     div(v-loading="loading" element-loading-text="数据加载中")
         data-tables(:data="tableData" :actions-def='actionsDef' v-show='show' :table-props="tableProps" :search-def="searchDef" :pagination-def="paginationDef" @filtered-data='handleFilteredData')
-            el-table-column(v-for="title in tableFixedTitles" :prop="title.prop" :label="title.label" :key="title.label" sortable="custom" fixed='left' :formatter='formatterColumn')
-            el-table-column(v-for="title in tableTitles" :prop="title.prop" :label="title.label" :key="title.label" sortable="custom" :formatter='formatterColumn')
+            el-table-column(v-for="title in tableFixedTitles" :prop="title.prop" :label="title.label" :key="title.label" sortable="custom" fixed='left' :formatter='formatterColumn' :render-header='renderHeaderFunc')
+            el-table-column(v-for="title in tableTitles" :prop="title.prop" :label="title.label" :key="title.label" sortable="custom" :formatter='formatterColumn' :render-header='renderHeaderFunc')
 </template>
 
 <script>
@@ -108,6 +108,13 @@ export default {
             default: (row, column) => {
                 let key = column.property
                 return row[key]
+            }
+        },
+        renderHeaderFunc: {
+            type: Function,
+            required: false,
+            default: (h, {column, $index}) => {
+                return column.label
             }
         }
     },
