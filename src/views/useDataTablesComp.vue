@@ -1,8 +1,8 @@
 <template lang='pug'>
 #DataTableDemo.textLeft
     div
-        DataTablesComp(:tableTitles='tableTitles' :tableData='tableData' :formatterColumn='formatColumn'
-    :loading='tableLoading' :renderHeaderFunc='renderHeader')
+        //DataTablesComp(:tableTitles='tableTitles' :tableData='tableData' :formatterColumn='formatColumn' :loading='tableLoading' :renderHeaderFunc='renderHeader')
+        DataTablesComp(:tableFixedTitles.sync='tableFixedTitles' :tableTitles='tableTitles' :tableData='tableData' :loading='tableLoading')
 </template>
 
 <script>
@@ -16,20 +16,33 @@
         data () {
             return {
                 tableLoading: false,
-                tableTitles: [
+                tableFixedTitles: [
                     {label: '日期', prop: 'dt'},
-                    {label: '用户类型', prop: 'user_type'},
-                    {label: '渠道名', prop: 'dimension'},
-                    {label: 'dnu', prop: 'dnu'},
-                    {label: '占比%', prop: 'dnu_ratio'}
+                    {label: '用户类型', prop: 'user_type'}
                 ],
-                tableData: [
-                    {dt: '20180304'}
-                ]
+                tableTitles: [
+                    {label: 'dau', prop: 'dau'}
+                ],
+                tableData: []
             }
         },
+        created () {
+            this.tableData = [
+                {
+                    dt: '20180304',
+                    user_type: '全部',
+                    dau: 1100
+                }
+            ]
+        },
         mounted () {
-
+            // this.tableData = [
+            //     {
+            //         dt: '20180304',
+            //         user_type: '全部',
+            //         dau: 1100
+            //     }
+            // ]
         },
         computed: {},
         methods: {
@@ -62,5 +75,7 @@
 </script>
 
 <style lang='stylus' type="text/stylus">
+    .el-table td.is-hidden>*, .el-table th.is-hidden>*
+        visibility visible
 </style>
 

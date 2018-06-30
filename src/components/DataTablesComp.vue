@@ -125,6 +125,35 @@ export default {
     },
     created () {
     },
+    computed: {
+
+    },
+    watch: {
+        tableData: {
+            handler (newVal, oldVal) {
+                let newFixedTitles = this.tableFixedTitles
+                console.log('init newFixedTitles')
+                console.log(newFixedTitles)
+                if (newVal.length > 0) {
+                    for (let i = 0; i < newVal.length; i++) {
+                        if (newVal[i]) {
+                            for (let key in newVal[i]) {
+                                if (newVal[i][key] === '全部' || newVal[i][key] === 'all') {
+                                    console.log(key)
+                                    newFixedTitles = newFixedTitles.filter((titleItem, i) => titleItem.prop !== key)
+                                }
+                            }
+                            break
+                        }
+                    }
+                }
+                console.log('final newFixedTitles')
+                console.log(newFixedTitles)
+                this.$emit('update:tableFixedTitles', newFixedTitles)
+            },
+            immediate: true
+        }
+    },
     methods: {
         handleFilteredData (filteredData) {
             this.filteredData = filteredData

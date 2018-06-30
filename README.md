@@ -18,7 +18,11 @@ https://github.com/sheetjs/js-xlsx
 1. 给表格表头和单元格里添加元素
 
 ### 兼容性问题：
-1. 导出xlsx功能，在Safari 10.0及以下版本中，有报错：`Failed to load resource: Frame load interrupted`，原因是safari还不支持，升级到10.1及以上即可支持。详见：https://github.com/eligrey/FileSaver.js/issues/215  
+1. 导出xlsx功能，在Safari 10.0及以下版本中，有报错：`Failed to load resource: Frame load interrupted`，原因是safari还不支持，升级到10.1及以上即可支持。详见：https://github.com/eligrey/FileSaver.js/issues/215
+
+### .sync 修饰符的使用
+* 文件：src/views/useDataTablesComp.vue 中，`:tableFixedTitles.sync` 代码的含义：
+文件：src/components/DataTablesComp.vue 中watch了tableData，如果tableData里有prop值为'全部'或'all'，如果tableFixedTitles中包含该prop，就删掉该prop。
 
 > A Vue.js project
 
