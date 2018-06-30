@@ -120,7 +120,8 @@ export default {
     },
     data () {
         return {
-            filteredData: []
+            filteredData: [],
+            initFixedTitles: this.tableFixedTitles
         }
     },
     created () {
@@ -131,7 +132,7 @@ export default {
     watch: {
         tableData: {
             handler (newVal, oldVal) {
-                let newFixedTitles = this.tableFixedTitles
+                let newFixedTitles = this.initFixedTitles
                 console.log('init newFixedTitles')
                 console.log(newFixedTitles)
                 if (newVal.length > 0) {
