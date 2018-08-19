@@ -1,5 +1,8 @@
 # vue_tables_xlsx_demo
 
+### 说明：
+此项目是基于 vue-data-tables 版本3.1.0；如果使用 vue-data-tables 的其他版本，代码可能需要自己根据具体版本进行调整。
+
 ### 官方地址
 * vue-data-tables:
 https://www.njleonzhang.com/vue-data-tables/#/
