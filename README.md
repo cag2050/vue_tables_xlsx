@@ -2,7 +2,7 @@
 
 ### 官方地址
 * vue-data-tables:
-https://njleonzhang.github.io/vue-data-tables/#/event?id=filtered-data
+https://www.njleonzhang.com/vue-data-tables/#/
 * js-xlsx:
 https://github.com/sheetjs/js-xlsx
 
